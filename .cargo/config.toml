@@ -1,0 +1,12 @@
+[build]
+# Target is specified in a file since RISCV32ec is not directly supported
+target = "riscv32ec-unknown-none-elf.json"
+
+[target.riscv32ec-unknown-none-elf]
+# Use probe-rs for running the project and specify the linker script
+runner = "probe-rs run --chip ch32v003"
+rustflags = ["-C", "link-arg=-Tlink.x"]
+
+# Nightly Rust features for building a subset of the standard library
+[unstable]
+build-std = ["core"]

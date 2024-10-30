@@ -1,0 +1,18 @@
+[package]
+name = "ch32v003-blinky-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+panic-halt = "1.0.0"
+ch32-hal = { git = "https://github.com/ch32-rs/ch32-hal", features = [
+        "ch32v003f4u6",
+    ] }
+qingke-rt = "0.4.0"
+qingke = "0.4.0"
+embedded-hal = "1.0.0"
+
+[profile.dev]
+strip = false   # symbols are not flashed to the microcontroller, so don't strip them.
+lto = true
+opt-level = "s" # Optimize for size.
