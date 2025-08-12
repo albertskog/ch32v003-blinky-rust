@@ -18,7 +18,10 @@ Between CH32V003F4P6-EVT-R0 and WCH-LinkE, connect:
 
 ## Running
 
-1. Install Rust and probe-rs.
+1. Install Rust and probe-rs. Recommend installing version 0.26.0 of probe-rs-tools as the latest version has a bug (https://github.com/probe-rs/probe-rs/issues/3455). If installing the binary in Linux, use `https://github.com/probe-rs/probe-rs/releases/download/v0.26.0/probe-rs-tools-installer.sh`, or for installing from source:
+```shell
+cargo install probe-rs-tools --version 0.26.0
+```
 
 2. Set up project to use Rust Nightly
 ```shell
@@ -36,9 +39,37 @@ rustup component add rust-src
 ```shell
 cargo run
 ```
+or to run with the cargo-embed environment installed with probe-rs:
+
+```shell
+cargo embed
+```
+
+5. To open a debug environment in VSCode, add this to a launch.json file:
+```
+{
+    "type": "probe-rs-debug",
+    "request": "launch",
+    "name": "probe-rs ch32",
+    "cwd": "${workspaceFolder}",
+    "connectUnderReset": false,
+    "chip": "CH32V003",
+    "flashingConfig": {
+        "flashingEnabled": true,
+        "haltAfterReset": true
+    },
+    "probe": "1a86:8010",
+    "coreConfigs": [
+        {
+            "coreIndex": 0,
+            "programBinary": "./target/riscv32ec-unknown-none-elf/debug/${workspaceFolderBasename}"
+        }
+    ]
+}
+```
 
 ## Acknowledgements
 
-This was based on the examples project in `ch32-hal`. You can find the original code here: 
+This was based on the examples project in `ch32-hal`. You can find the original code here:
 
 https://github.com/ch32-rs/ch32-hal/tree/main/examples/ch32v003
