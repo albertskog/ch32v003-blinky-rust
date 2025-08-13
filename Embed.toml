@@ -1,0 +1,14 @@
+[default.general]
+chip = "CH32V003"
+
+[default.probe]
+usb_vid = "1a86"
+usb_pid = "8010"
+protocol = "Jtag"
+
+[default.flashing]
+verify = true
+
+[default.rtt]
+enabled = true
+log_enabled = true
