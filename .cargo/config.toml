@@ -10,3 +10,4 @@ rustflags = ["-C", "link-arg=-Tlink.x"]
 # Nightly Rust features for building a subset of the standard library
 [unstable]
 build-std = ["core"]
+json-target-spec = true
