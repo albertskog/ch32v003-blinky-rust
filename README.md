@@ -18,9 +18,9 @@ Between CH32V003F4P6-EVT-R0 and WCH-LinkE, connect:
 
 ## Running
 
-1. Install Rust and probe-rs. Recommend installing version 0.26.0 of probe-rs-tools as the latest version has a bug (https://github.com/probe-rs/probe-rs/issues/3455). If installing the binary in Linux, use `https://github.com/probe-rs/probe-rs/releases/download/v0.26.0/probe-rs-tools-installer.sh`, or for installing from source:
+1. Install Rust and then probe-rs:
 ```shell
-cargo install probe-rs-tools --version 0.26.0
+cargo install probe-rs-tools
 ```
 
 2. Set up project to use Rust Nightly
